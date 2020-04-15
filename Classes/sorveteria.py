@@ -1,3 +1,4 @@
+#Exercício página 241
 class Restaurant():
     """Uma tentativa de modelar um restaurante"""
     def __init__(self, restaurant_name, food_type):

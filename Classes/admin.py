@@ -1,3 +1,4 @@
+#Exercício página 241
 class User():
     """Modelar um usuário"""
     def __init__(self, first_name, last_name, age, location):
@@ -28,19 +29,20 @@ class User():
     def get_login_attempts(self):
         return self.login_attempts
 
-user_A = User('Bruno','Pires',19,'Joinville')
+class Admin(User):
+    def __init__(self,first_name,last_name,age,location):
+        super().__init__(first_name,last_name,age,location)
+        self.adm_privileges = Privileges()
+    
 
-user_A.greet_user()
+class Privileges():
+    def __init__(self):
+        self.privileges=['can add post', 'can delete post','can accept user','can ban user']
+    
+    def show_privileges(self):
+        for privilege in self.privileges:
+            print(privilege)
+        
 
-user_A.describe_user()
-user_A.increment_login_attempts()   
-user_A.increment_login_attempts()   
-user_A.increment_login_attempts()   
-user_A.increment_login_attempts()   
-user_A.increment_login_attempts()  
-user_A.increment_login_attempts() 
-print(str(user_A.get_login_attempts())+" tentativas de login")
-user_A.reset_login_attempts()
-print(str(user_A.get_login_attempts())+" tentativas de login")
-
-
+adm = Admin('Bruno','Pires',19,'Joinville')
+adm.adm_privileges.show_privileges()
