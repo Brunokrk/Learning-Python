@@ -4,13 +4,13 @@ class Die():
     """Modelando um dado"""
     def __init__(self,sides):
         self.sides = 6
-        self.qtd = 10
+      
     
     def roll_die(self, qtd):
-        self.qtd+=1
-        while range(1, self.qtd):
+        qtd+=1
+        for x in range(1, qtd):
             x = randint(1, 6)
             print(str(x))
 
 die= Die(6)
-die.roll_die(10)
+die.roll_die(2)
