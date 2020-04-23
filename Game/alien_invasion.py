@@ -21,7 +21,7 @@ def run_game():
     pygame.display.set_caption("Space Invaders")
 
     #Cria uma espaçonave
-    ship = Ship(screen)
+    ship = Ship(ai_settings, screen)
 
 
     #Inicializa o laço principal do jogo
