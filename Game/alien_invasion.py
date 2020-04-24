@@ -8,6 +8,7 @@ from ship import Ship
 
 import game_functions as gf
 
+
 def run_game():
     """Inicializa o pygame, as configurações e o objeto screen"""
 
