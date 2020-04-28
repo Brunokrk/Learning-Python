@@ -6,6 +6,8 @@ from settings import Settings
 
 from ship import Ship
 
+from alien import Alien
+
 import game_functions as gf
 
 
@@ -20,7 +22,7 @@ def run_game():
     ai_settings = Settings()
 
     #cria janela de exibição
-    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height)) #
+    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height)) 
     pygame.display.set_caption("Space Invaders")
 
     #Cria uma espaçonave
@@ -29,13 +31,15 @@ def run_game():
     #Cria um grupo no qual serão armazenados os projéteis
     bullets = Group()
 
+    #Cria um alienígena
+    alien = Alien(ai_settings, screen)
+
     #Inicializa o laço principal do jogo
     while True:
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(bullets)
-
-        gf.update_screen(ai_settings, screen, ship, bullets)
+        gf.update_screen(ai_settings, screen, ship, alien, bullets)
 
         
 
