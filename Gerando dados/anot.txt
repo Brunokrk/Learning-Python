@@ -1,0 +1,1 @@
+Tipos de visualizações que podem ser criadas com matplotlib: http://matplotlib.org/
