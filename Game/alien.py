@@ -1,31 +1,40 @@
 import pygame
-
 from pygame.sprite import Sprite
 
 class Alien(Sprite):
-    """Uma classe que representa um unico alienígena da frota"""
+    """A class to represent a single alien in the fleet."""
 
-    def __init_(self, ai_settings, screen):
-        """Inicializa o alienígena e define sua posição inicial"""
-
+    def __init__(self, ai_settings, screen):
+        """Initialize the alien, and set its starting position."""
         super(Alien, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
 
-        #Carrega a imagem do alienígena e define seu atributo rect
-        self.image = pygame.image.load('Game/images/alien.bmp')
+        # Load the alien image, and set its rect attribute.
+        self.image = pygame.image.load('images/alien.bmp')
         self.rect = self.image.get_rect()
 
-        #Inicia cada novo alienígena próximo a parte superior esquerda da tela
+        # Start each new alien near the top left of the screen.
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
 
-        #Armazena a posição exata do alienígena
+        # Store the alien's exact position.
         self.x = float(self.rect.x)
+        
+    def check_edges(self):
+        """Return True if alien is at edge of screen."""
+        screen_rect = self.screen.get_rect()
+        if self.rect.right >= screen_rect.right:
+            return True
+        elif self.rect.left <= 0:
+            return True
+        
+    def update(self):
+        """Move the alien right or left."""
+        self.x += (self.ai_settings.alien_speed_factor *
+                        self.ai_settings.fleet_direction)
+        self.rect.x = self.x
 
-    
     def blitme(self):
-        """Desenha o alienígena em sua posição atual"""
-
+        """Draw the alien at its current location."""
         self.screen.blit(self.image, self.rect)
-    

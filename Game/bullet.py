@@ -1,37 +1,33 @@
 import pygame
-
 from pygame.sprite import Sprite
 
 class Bullet(Sprite):
-    """Uma classe que administra projéteis disparados pela espaçonave"""
-    
+    """A class to manage bullets fired from the ship."""
+
     def __init__(self, ai_settings, screen, ship):
-        """Cria um objeto para o projétil na posição atual da espaçonave"""
+        """Create a bullet object, at the ship's current position."""
         super(Bullet, self).__init__()
         self.screen = screen
 
-        #Cria um retângulo para o projétil em (0,0) e, em seguida, define a
-        #posição correta
-        self.rect = pygame.Rect(0, 0, ai_settings.bullet_width, ai_settings.bullet_height)
+        # Create bullet rect at (0, 0), then set correct position.
+        self.rect = pygame.Rect(0, 0, ai_settings.bullet_width,
+            ai_settings.bullet_height)
         self.rect.centerx = ship.rect.centerx
         self.rect.top = ship.rect.top
-
-        #Armazena a posição do projétil como um valor decimal
+        
+        # Store a decimal value for the bullet's position.
         self.y = float(self.rect.y)
 
         self.color = ai_settings.bullet_color
         self.speed_factor = ai_settings.bullet_speed_factor
-    
+
     def update(self):
-        """Move o projétil para cima na tela"""
-        
-        #Atualiza a posição decimal do projétil
+        """Move the bullet up the screen."""
+        # Update the decimal position of the bullet.
         self.y -= self.speed_factor
-        #Atualiza a posição de rect
+        # Update the rect position.
         self.rect.y = self.y
-    
+
     def draw_bullet(self):
-        """Desenha o projétil na tela"""
+        """Draw the bullet to the screen."""
         pygame.draw.rect(self.screen, self.color, self.rect)
-
-
