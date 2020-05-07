@@ -1,1 +1,2 @@
 Tipos de visualizações que podem ser criadas com matplotlib: http://matplotlib.org/
+Tipos de visualizações possíveis com Pygal: http://www.pygal.org/
