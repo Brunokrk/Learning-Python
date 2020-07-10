@@ -1,35 +1,21 @@
+import isle_functions 
 class  Matriz():
     """Modelagem de uma Matriz"""
 
-    def __init__(self, lines, columns):
+    def __init__(self):
         """Inicializa os atributos que descrevem uma Matriz"""
-        self.lines = lines
-        self.columns = columns
-        self.elements = (lines*columns)
-        self.matriz = []
-
-    def set_matriz(self):
-        """Aloca a Matriz"""
-        for i in range(self.lines):
-            linha = []
-            
-            for j in range(self.columns):
-                linha.append(0)
-            
-            self.matriz.append(linha)
-
-        self.matriz[1][1] = 3
-    
+        arquivo = isle_functions.open_arq()
+        self.matriz = arquivo.readlines()
+        self.lines = len(self.matriz)
+        self.columns = len(self.matriz[0]) - 1
+        self.elements = (self.lines * self.columns)
+        arquivo.close()
+        
     def print_matriz(self):
-        for i in range(self.lines):
-            for j in range(self.columns):
-                print(self.matriz[i][j], end='')
-                print()
+        
+        for line in range(self.lines):
+            for column in range(self.columns):
+                print(self.matriz[line][column], end='')
+            print()
             
-    
-matriz = Matriz(5,5)
-matriz.set_matriz()
-matriz.print_matriz()
-    
 
-    
