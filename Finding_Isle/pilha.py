@@ -15,13 +15,13 @@ class Pilha():
         t=""
         ptr = self.top
         while(ptr):
-            t = t + str(ptr.data)+ "\n"
+            t = t + str(ptr.line)+ "," + str(ptr.column) + "\n"
             ptr = ptr.next
         return t
 
-    def push(self, data):
+    def push(self, line, column):
         """Insere um elemento na pilha"""
-        new_node = Node(data)
+        new_node = Node(line, column)
         
         new_node.next = self.top
         self.top = new_node
@@ -39,6 +39,7 @@ class Pilha():
     def peek(self):
         """Retorna o quem está no topo da pilha"""
         if self.size > 0:
-            return self.top.data
-        raise IndexError("Empty Stack")
+            return str(self.top.line) +","+ str(self.top.column)
+        else:
+            return("Null")
 
