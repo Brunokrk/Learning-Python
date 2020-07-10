@@ -38,8 +38,9 @@ class Pilha():
 
     def peek(self):
         """Retorna o quem está no topo da pilha"""
-        if self.size > 0:
-            return str(self.top.line) +","+ str(self.top.column)
-        else:
-            return("Null")
+        if self.top == None:
+            return None
+        else: 
+            return str(self.top.line) + str(self.top.column)
+
 

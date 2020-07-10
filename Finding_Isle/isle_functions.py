@@ -1,8 +1,3 @@
-def open_arq():
-    """Abre arquivo em modo leitura"""
-    arq = open("Finding_Isle/map_in.txt",'r')
-    return(arq)
-
 def label (matriz, line, column, rot):
     """Rotula a posição passada"""
     matriz[line][column] = rot
