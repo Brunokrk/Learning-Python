@@ -43,4 +43,3 @@ class Pilha():
         else: 
             return str(self.top.line) + str(self.top.column)
 
-

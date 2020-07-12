@@ -7,7 +7,7 @@ class Matriz():
 
     def __init__(self):
         """Inicializa os atributos que descrevem uma Matriz"""
-        arquivo = open('Finding_Isle/map_in.txt', 'r')
+        arquivo = fnc.open_arq("entrada.txt")
         self.matriz = arquivo.readlines()
         self.lines = len(self.matriz)
         self.columns = len(self.matriz[0]) - 1
@@ -24,30 +24,29 @@ class Matriz():
     def finding_isles(self):
         """Método que identifica as ilhas"""
         pilha = Pilha()
-        print(len(pilha))
         rot = 2
+        flag = 0
         for line in range(0, self.lines):
+            print("a")
             for column in range(0, self.columns):
-                while(1):
-                    if (self.matriz[line][column] == 1):
+                print("b")
+                while(flag == 0):
+                    print("c")
+                    if self.matriz[line][column] == 1:
                         pilha.push(line, column)
-                        fnc.label(self.matriz, line, column, rot)
-                        fnc.checking_neighbors(self.matriz, pilha, line, column, rot)
                         print(len(pilha))
-                        if(len(pilha) == 0):
+                        fnc.label(self.matriz, line, column, rot)
+                        fnc.checking_neighbors(
+                            self.matriz, pilha, line, column, rot)
+                        if(pilha.top == None):
                             rot = rot + 1
-                    elif ((self.matriz[line][column] == rot) and (len(pilha) == 0)):
+                    elif((self.matriz[line][column] == rot) and (pilha.top != None)):
                         line = pilha.top.line
                         column = pilha.top.column
                         fnc.checking_neighbors(
                             self.matriz, pilha, line, column, rot)
-                        if(len(pilha) == 0):
-                            rot = rot + 1
-                    elif (len(pilha) == 0):
-                        break
-        print(pilha)
-
-
-matriz = Matriz()
-matriz.finding_isles()
-matriz.print_matriz()
+                        if(pilha.top == None):
+                            rot = rot + 1 
+                    elif(pilha.top == None):
+                        flag = 1
+                flag = 0
